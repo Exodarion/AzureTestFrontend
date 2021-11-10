@@ -1,0 +1,20 @@
+<script>
+    function start()
+    {
+        var var2 = new XMLHttpRequest(); // jQuery Ajax // fetch
+        var2.onreadystatechange = function () 
+        {
+            if(this.readyState == 4)
+            {
+                console.log(this.responseText);
+                var mijnObject = JSON.parse(this.responseText);
+                document.getElementById("mijnoutput").innerHTML = mijnObject.firstName + " : " + mijnObject.lastName;
+            }
+        }
+        var2.open("GET", "http://localhost:8080/randomEndpoint/", true);
+        var2.send();
+    }
+</script>
+<input type = button onclick=start() value=klikhier>
+<div id=mijnoutput></div>
+</html>
